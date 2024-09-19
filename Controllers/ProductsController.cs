@@ -56,10 +56,8 @@ namespace EAD.Controllers
             if (imageFile == null || imageFile.Length == 0)
                 return BadRequest("No file uploaded.");
 
-            // Save image to local folder
             var imagePath = await SaveImageLocallyAsync(imageFile);
 
-            // Update the product with the new image path
             var product = await _productRepository.GetProductByIdAsync(productId);
             if (product == null)
                 return NotFound("Product not found.");

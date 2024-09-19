@@ -25,7 +25,7 @@
 
         public async Task<Product> GetProductByIdAsync(string id)
         {
-            var objectId = ObjectId.Parse(id); // Convert string ID to ObjectId
+            var objectId = ObjectId.Parse(id);
             return await _products.Find(p => p.Id == objectId.ToString()).FirstOrDefaultAsync();
         }
 
@@ -74,7 +74,7 @@
 
         public async Task ActivateProductAsync(string id)
         {
-            var objectId = ObjectId.Parse(id); // Convert string ID to ObjectId
+            var objectId = ObjectId.Parse(id);
             var update = Builders<Product>.Update.Set(p => p.IsActive, true);
             await _products.UpdateOneAsync(p => p.Id == objectId.ToString(), update);
         }

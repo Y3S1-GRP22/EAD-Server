@@ -40,6 +40,7 @@
 
                 product.StockQuantity -= quantity;
                 await _products.ReplaceOneAsync(p => p.Id == product.Id, product);
+                await NotifyVendorIfLowStockAsync(productId);
             }
         }
 
@@ -61,7 +62,8 @@
             var product = await _products.Find(p => p.Id == productId).FirstOrDefaultAsync();
             if (product != null && product.StockQuantity < 10) 
             {
-                await _notificationService.NotifyVendorAsync("Vendor Id", productId, product.StockQuantity);
+                //TODO: add vendor email
+                await _notificationService.NotifyVendorAsync("vendorEmail", productId, product.StockQuantity);
             }
         }
     }
