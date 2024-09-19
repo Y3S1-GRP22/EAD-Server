@@ -33,7 +33,7 @@ namespace EAD.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct([FromBody] Product product)
+        public async Task<IActionResult> AddProduct([FromBody] Product product, [FromForm] IFormFile? imageFile)
         {
             var category = await _categoryRepository.GetCategoryByIdAsync(product.CategoryId);
             if (category == null)
@@ -46,6 +46,50 @@ namespace EAD.Controllers
             await _productRepository.AddProductAsync(product);
             return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
         }
+
+        [HttpPost("upload-image")]
+        public async Task<IActionResult> UploadImage([FromForm] string productId, [FromForm] IFormFile imageFile)
+        {
+            if (string.IsNullOrEmpty(productId))
+                return BadRequest("Product ID is required.");
+
+            if (imageFile == null || imageFile.Length == 0)
+                return BadRequest("No file uploaded.");
+
+            // Save image to local folder
+            var imagePath = await SaveImageLocallyAsync(imageFile);
+
+            // Update the product with the new image path
+            var product = await _productRepository.GetProductByIdAsync(productId);
+            if (product == null)
+                return NotFound("Product not found.");
+
+            product.ImagePath = imagePath;
+            await _productRepository.UpdateProductAsync(product);
+
+            return Ok(new { imagePath });
+        }
+
+
+        private async Task<string> SaveImageLocallyAsync(IFormFile imageFile)
+        {
+            var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+            if (!Directory.Exists(uploadsFolderPath))
+            {
+                Directory.CreateDirectory(uploadsFolderPath);
+            }
+
+            var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(imageFile.FileName);
+            var filePath = Path.Combine(uploadsFolderPath, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+
+            return "/uploads/" + uniqueFileName;
+        }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product)

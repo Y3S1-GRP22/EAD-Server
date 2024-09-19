@@ -48,7 +48,21 @@
         public async Task DeleteProductAsync(string id)
         {
             var objectId = ObjectId.Parse(id); // Convert string ID to ObjectId
+
+            bool hasPendingOrders = await CheckPendingOrdersAsync(id);
+            if (hasPendingOrders)
+            {
+                throw new InvalidOperationException("Cannot remove stock for products with pending orders.");
+            }
+
             await _products.DeleteOneAsync(p => p.Id == objectId.ToString());
+        }
+
+        private async Task<bool> CheckPendingOrdersAsync(string productId)
+        {
+            // Implement logic to check if there are pending orders for the given product
+            // This could involve checking an Orders collection or similar.
+            return false; // Placeholder
         }
 
         public async Task DeactivateProductAsync(string id)

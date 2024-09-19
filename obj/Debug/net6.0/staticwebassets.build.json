@@ -1,11 +1,71 @@
 {
   "Version": 1,
-  "Hash": "I+uZRz9u7cb4whfunRNBOc1mJFrXSbj2JESKjkogyHY=",
+  "Hash": "NN90Z6kWr6WH2ZCwa98pvlILE8FBahdQyuK4FBQUwlA=",
   "Source": "EAD",
   "BasePath": "_content/EAD",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "EAD\\wwwroot",
+      "Source": "EAD",
+      "ContentRoot": "D:\\SLIIT\\Y 4 Sem 1\\EAD\\Assignment\\EAD\\EAD\\wwwroot\\",
+      "BasePath": "_content/EAD",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\SLIIT\\Y 4 Sem 1\\EAD\\Assignment\\EAD\\EAD\\wwwroot\\uploads\\0cae92fd-6207-4ac0-98b8-5726bf7a0699_System Diagram.drawio.png",
+      "SourceId": "EAD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SLIIT\\Y 4 Sem 1\\EAD\\Assignment\\EAD\\EAD\\wwwroot\\",
+      "BasePath": "_content/EAD",
+      "RelativePath": "uploads/0cae92fd-6207-4ac0-98b8-5726bf7a0699_System Diagram.drawio.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\0cae92fd-6207-4ac0-98b8-5726bf7a0699_System Diagram.drawio.png"
+    },
+    {
+      "Identity": "D:\\SLIIT\\Y 4 Sem 1\\EAD\\Assignment\\EAD\\EAD\\wwwroot\\uploads\\612ed437-ac2e-4d39-9477-3270775e165a_System Diagram.drawio.png",
+      "SourceId": "EAD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SLIIT\\Y 4 Sem 1\\EAD\\Assignment\\EAD\\EAD\\wwwroot\\",
+      "BasePath": "_content/EAD",
+      "RelativePath": "uploads/612ed437-ac2e-4d39-9477-3270775e165a_System Diagram.drawio.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\612ed437-ac2e-4d39-9477-3270775e165a_System Diagram.drawio.png"
+    },
+    {
+      "Identity": "D:\\SLIIT\\Y 4 Sem 1\\EAD\\Assignment\\EAD\\EAD\\wwwroot\\uploads\\88c541dc-7125-4a17-9783-45bfbf372536_blog-common-bg.jpg",
+      "SourceId": "EAD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\SLIIT\\Y 4 Sem 1\\EAD\\Assignment\\EAD\\EAD\\wwwroot\\",
+      "BasePath": "_content/EAD",
+      "RelativePath": "uploads/88c541dc-7125-4a17-9783-45bfbf372536_blog-common-bg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\88c541dc-7125-4a17-9783-45bfbf372536_blog-common-bg.jpg"
+    }
+  ]
 }
