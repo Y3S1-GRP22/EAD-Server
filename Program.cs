@@ -32,6 +32,7 @@ builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 builder.Services.AddScoped<IVendorNotificationService, VendorNotificationService>();
 builder.Services.AddControllers();
 builder.Services.AddTransient<EmailService>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 // Add CORS services
 builder.Services.AddCors(options =>
