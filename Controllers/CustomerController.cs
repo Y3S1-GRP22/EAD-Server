@@ -1,6 +1,5 @@
 ﻿using EAD.Models;
 using EAD.Repositories;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using static EAD.Repositories.CustomerRepository;
 
