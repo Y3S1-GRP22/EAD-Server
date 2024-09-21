@@ -32,6 +32,13 @@ builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 builder.Services.AddScoped<IVendorNotificationService, VendorNotificationService>();
 builder.Services.AddControllers();
 builder.Services.AddTransient<EmailService>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<JwtService>(sp =>
+{
+    var config = builder.Configuration;
+    return new JwtService(config["Jwt:Key"]); // Add Jwt:Key to your appsettings
+});
 
 // Add CORS services
 builder.Services.AddCors(options =>
