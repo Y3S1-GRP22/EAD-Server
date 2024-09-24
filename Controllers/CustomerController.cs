@@ -21,18 +21,27 @@ public class CustomerController : ControllerBase
     {
         if (customer == null || string.IsNullOrEmpty(customer.Email) || string.IsNullOrEmpty(customer.Password))
         {
-            return BadRequest("Email and password are required.");
+            return BadRequest(new { message = "Email and password are required." });
         }
 
         var existingCustomer = await _customerRepository.GetCustomerByEmailAsync(customer.Email);
         if (existingCustomer != null)
         {
-            return Conflict("Customer with this email already exists.");
+            return Conflict(new { message = "Customer with this email already exists." });
         }
 
-        await _customerRepository.RegisterCustomerAsync(customer);
-        return CreatedAtAction(nameof(GetCustomerByEmail), new { email = customer.Email }, customer);
+        try
+        {
+            await _customerRepository.RegisterCustomerAsync(customer);
+            return CreatedAtAction(nameof(GetCustomerByEmail), new { email = customer.Email }, customer);
+        }
+        catch (Exception ex)
+        {
+            // Log the exception
+            return StatusCode(500, new { message = "An unexpected error occurred during registration." });
+        }
     }
+
 
     [HttpGet("{email}")]
     public async Task<IActionResult> GetCustomerByEmail(string email)
@@ -98,7 +107,13 @@ public class CustomerController : ControllerBase
         switch (loginResult)
         {
             case LoginResult.Success:
-                return Ok(new { Message = "Login successful." });
+                // Retrieve the customer details after successful login
+                var customer = await _customerRepository.GetCustomerByEmailAsync(loginRequest.Email);
+                return Ok(new
+                {
+                    Message = "Login successful.",
+                    Customer = customer
+                });
             case LoginResult.InvalidEmail:
                 return NotFound(new { Message = "Invalid email address." });
             case LoginResult.IncorrectPassword:
@@ -109,4 +124,5 @@ public class CustomerController : ControllerBase
                 return StatusCode(500, "An unexpected error occurred.");
         }
     }
+
 }
