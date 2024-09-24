@@ -54,7 +54,7 @@
             {
                 throw new InvalidOperationException("Stock is not empty.");
             }
-            
+
             bool hasPendingOrders = await CheckPendingOrdersAsync(id);
             if (hasPendingOrders)
             {
@@ -103,5 +103,19 @@
 
             return products;
         }
+
+        public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(string categoryId)
+        {
+            var objectId = ObjectId.Parse(categoryId);
+            var categoryExists = await _categories.Find(c => c.Id == objectId.ToString()).AnyAsync();
+
+            if (!categoryExists)
+            {
+                throw new KeyNotFoundException("Category not found");
+            }
+
+            return await _products.Find(p => p.CategoryId == objectId.ToString()).ToListAsync();
+        }
+
     }
 }
