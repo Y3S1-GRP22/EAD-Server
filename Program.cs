@@ -3,6 +3,10 @@ using Microsoft.Extensions.Options;
 using EAD.Configuration; // Update with your actual namespace
 using EAD.Repositories;
 using EAD.Services;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +44,25 @@ builder.Services.AddScoped<JwtService>(sp =>
     return new JwtService(config["Jwt:Key"]); // Add Jwt:Key to your appsettings
 });
 
+// JWT Authentication
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]))
+    };
+});
+
 // Add CORS services
 builder.Services.AddCors(options =>
 {
@@ -71,6 +94,8 @@ app.UseRouting();
 // Apply CORS policy
 app.UseCors("AllowSpecificOrigin");
 
+// Add authentication and authorization middleware
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

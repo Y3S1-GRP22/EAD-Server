@@ -20,6 +20,12 @@ public class User
 	public string Password { get; set; }
 
 	[Required]
+	public string MobileNumber { get; set; }
+
+	[Required]
+	public string Address { get; set; }
+
+	[Required]
 	public string Role { get; set; }
 
 	public bool IsActive { get; set; } = true;
