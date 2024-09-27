@@ -62,6 +62,7 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]))
     };
 });
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 // Add CORS services
 builder.Services.AddCors(options =>
@@ -78,6 +79,9 @@ builder.Services.AddCors(options =>
 // Add controllers and views
 builder.Services.AddControllersWithViews();
 
+// Bind the server to all network interfaces (0.0.0.0) to make it accessible externally
+builder.WebHost.UseUrls("http://0.0.0.0:5000");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
@@ -87,7 +91,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // Uncomment if you plan to use HTTPS
 app.UseStaticFiles();
 app.UseRouting();
 
