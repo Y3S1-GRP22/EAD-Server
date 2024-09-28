@@ -109,3 +109,4 @@ C:\Users\shobi\OneDrive\Desktop\EAD Project Final\obj\Debug\net6.0\refint\EAD.dl
 C:\Users\shobi\OneDrive\Desktop\EAD Project Final\obj\Debug\net6.0\EAD.pdb
 C:\Users\shobi\OneDrive\Desktop\EAD Project Final\obj\Debug\net6.0\EAD.genruntimeconfig.cache
 C:\Users\shobi\OneDrive\Desktop\EAD Project Final\obj\Debug\net6.0\ref\EAD.dll
+C:\Users\shobi\OneDrive\Desktop\EAD Project Final\bin\Debug\net6.0\BCrypt.Net-Next.dll
