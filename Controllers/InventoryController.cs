@@ -9,6 +9,7 @@ namespace EAD.Controllers
     {
         private readonly IInventoryRepository _inventoryRepository;
 
+        // Constructor that initializes the inventory repository
         public InventoryController(IInventoryRepository inventoryRepository)
         {
             _inventoryRepository = inventoryRepository;
@@ -19,7 +20,12 @@ namespace EAD.Controllers
             public int Stock { get; set; }
         }
 
-
+        /// <summary>
+        /// Updates the stock quantity for a given product ID.
+        /// </summary>
+        /// <param name="productId">The ID of the product to update.</param>
+        /// <param name="request">The request containing the new stock quantity.</param>
+        /// <returns>An action result indicating the outcome of the operation.</returns>
         [HttpPut("update-stock/{productId}")]
         public async Task<IActionResult> UpdateStock(string productId, [FromBody] UpdateStockRequest request)
         {
@@ -34,6 +40,12 @@ namespace EAD.Controllers
             }
         }
 
+        /// <summary>
+        /// Removes a specified quantity of stock for a given product ID.
+        /// </summary>
+        /// <param name="productId">The ID of the product to remove stock from.</param>
+        /// <param name="request">The request containing the stock quantity to remove.</param>
+        /// <returns>An action result indicating the outcome of the operation.</returns>
         [HttpPut("remove-stock/{productId}")]
         public async Task<IActionResult> RemoveStock(string productId, [FromBody] UpdateStockRequest request)
         {
@@ -48,6 +60,11 @@ namespace EAD.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves the current stock quantity for a given product ID.
+        /// </summary>
+        /// <param name="productId">The ID of the product to check.</param>
+        /// <returns>An action result containing the stock quantity.</returns>
         [HttpGet("get-stock/{productId}")]
         public async Task<IActionResult> GetStockQuantity(string productId)
         {
