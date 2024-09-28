@@ -10,4 +10,5 @@ public interface IProductRepository
     Task DeleteProductAsync(string id);
     Task DeactivateProductAsync(string id);
     Task ActivateProductAsync(string id);
+    Task<IEnumerable<Product>> GetProductsByCategoryAsync(string id);
 }
