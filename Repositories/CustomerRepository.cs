@@ -54,10 +54,10 @@
                 customer.Id = id; // Set the Id to ensure it remains the same
             }
 
-            if (!string.IsNullOrEmpty(customer.Password))
-            {
-                customer.Password = BCrypt.HashPassword(customer.Password);
-            }
+            //if (!string.IsNullOrEmpty(customer.Password))
+            //{
+            //    customer.Password = BCrypt.HashPassword(customer.Password);
+            //}
 
             var result = await _customers.ReplaceOneAsync(c => c.Id == id, customer);
             if (result.MatchedCount == 0)

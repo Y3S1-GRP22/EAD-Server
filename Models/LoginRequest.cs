@@ -1,4 +1,4 @@
-namespace EAD.Models
+﻿namespace EAD.Models
 {
     public class LoginRequest
     {
