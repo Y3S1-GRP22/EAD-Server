@@ -33,6 +33,10 @@ namespace EAD.Services
             if (user == null || !PasswordHasher.VerifyPassword(password, user.Password))
                 throw new Exception("Invalid credentials");
 
+            if (user.IsActive == false)
+            {
+                throw new Exception("User account is deactivated. Please contact support.");
+            }
             return _jwtService.GenerateToken(user.Email, user.Role, user.Username, user.Id);
         }
 

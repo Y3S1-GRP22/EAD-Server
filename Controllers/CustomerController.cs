@@ -1,5 +1,6 @@
 ﻿using EAD.Models;
 using EAD.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static EAD.Repositories.CustomerRepository;
 
@@ -51,6 +52,15 @@ public class CustomerController : ControllerBase
         return Ok(customer);
     }
 
+    [Authorize(Roles = "Admin,CSR")]
+    [HttpGet]
+    public async Task<IActionResult> GetAllCustomers()
+    {
+        var customers = await _customerRepository.GetAllCustomersAsync();
+        if (customers == null) return NotFound();
+        return Ok(customers);
+    }
+
     [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateCustomer(string id, [FromBody] Customer customer)
     {
@@ -67,7 +77,7 @@ public class CustomerController : ControllerBase
     }
 
 
-
+    [Authorize(Roles = "Admin,CSR")]
     [HttpPut("activate/{email}")]
     public async Task<IActionResult> ActivateCustomer(string email)
     {
