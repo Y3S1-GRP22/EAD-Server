@@ -52,5 +52,16 @@ namespace EAD.Controllers
             }
             return NotFound();
         }
+
+
+
+        // GET: api/comment/user/{userId}
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByUserId(string userId)
+        {
+            var comments = await _commentRepository.GetCommentsByUserId(userId);
+            return Ok(comments);
+        }
+
     }
 }

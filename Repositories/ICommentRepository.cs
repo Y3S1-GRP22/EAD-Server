@@ -10,5 +10,7 @@ namespace EAD.Repositories
         Task<Comment> AddComment(Comment comment);
         Task<bool> DeleteComment(string commentId);
         Task<IEnumerable<Comment>> GetCommentsByVendorId(string vendorId);
+
+        Task<IEnumerable<Comment>> GetCommentsByUserId(string userId);
     }
 }

@@ -40,5 +40,13 @@ namespace EAD.Repositories
         {
             return await _comments.Find(comment => comment.VendorId == vendorId).ToListAsync();
         }
+
+
+        // Add the new method in CommentRepository to retrieve comments by UserId
+        public async Task<IEnumerable<Comment>> GetCommentsByUserId(string userId)
+        {
+            return await _comments.Find(comment => comment.UserId == userId).ToListAsync();
+        }
+
     }
 }
