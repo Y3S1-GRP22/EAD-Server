@@ -17,6 +17,19 @@ namespace EAD.Controllers
             _commentRepository = commentRepository;
         }
 
+        [HttpGet("product/{productId}/rating")]
+        public async Task<ActionResult<double?>> GetAverageRatingByProductId(string productId)
+        {
+            var averageRating = await _commentRepository.GetAverageRatingByProductId(productId);
+
+            if (averageRating == null)
+            {
+                return NotFound("No ratings available for this product.");
+            }
+
+            return Ok(averageRating);
+        }
+
         // GET: api/comment/product/{productId}
         [HttpGet("product/{productId}")]
         public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByProductId(string productId)
@@ -62,6 +75,8 @@ namespace EAD.Controllers
             var comments = await _commentRepository.GetCommentsByUserId(userId);
             return Ok(comments);
         }
+
+        
 
     }
 }

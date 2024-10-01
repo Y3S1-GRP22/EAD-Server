@@ -12,5 +12,8 @@ namespace EAD.Repositories
         Task<IEnumerable<Comment>> GetCommentsByVendorId(string vendorId);
 
         Task<IEnumerable<Comment>> GetCommentsByUserId(string userId);
+
+        Task<double?> GetAverageRatingByProductId(string productId);
+
     }
 }
