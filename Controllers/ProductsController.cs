@@ -11,12 +11,17 @@ namespace EAD.Controllers
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
 
+        // Constructor to initialize repositories
         public ProductsController(IProductRepository productRepository, ICategoryRepository categoryRepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
         }
 
+        /// <summary>
+        /// Retrieves all products.
+        /// </summary>
+        /// <returns>List of all products.</returns>
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
         {
@@ -24,6 +29,11 @@ namespace EAD.Controllers
             return Ok(products);
         }
 
+        /// <summary>
+        /// Retrieves products by category ID.
+        /// </summary>
+        /// <param name="categoryId">The ID of the category to filter products.</param>
+        /// <returns>List of products in the specified category.</returns>
         [HttpGet("category/{categoryId}")]
         public async Task<IActionResult> GetProductsByCategory(string categoryId)
         {
@@ -31,6 +41,10 @@ namespace EAD.Controllers
             return Ok(products);
         }
 
+        /// <summary>
+        /// Retrieves a product by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the product to retrieve.</param>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(string id)
         {
@@ -39,6 +53,12 @@ namespace EAD.Controllers
             return Ok(product);
         }
 
+        /// <summary>
+        /// Adds a new product.
+        /// </summary>
+        /// <param name="product">The product to add.</param>
+        /// <param name="imageFile">Optional image file for the product.</param>
+        /// <returns>Created result with the newly added product.</returns>
         [HttpPost]
         public async Task<IActionResult> AddProduct([FromBody] Product product, [FromForm] IFormFile? imageFile)
         {
@@ -54,6 +74,12 @@ namespace EAD.Controllers
             return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
         }
 
+        /// <summary>
+        /// Uploads an image for a specific product.
+        /// </summary>
+        /// <param name="productId">The ID of the product.</param>
+        /// <param name="imageFile">The image file to upload.</param>
+        /// <returns>OK result with the image path.</returns>
         [HttpPost("upload-image")]
         public async Task<IActionResult> UploadImage([FromForm] string productId, [FromForm] IFormFile imageFile)
         {
@@ -75,7 +101,11 @@ namespace EAD.Controllers
             return Ok(new { imagePath });
         }
 
-
+        /// <summary>
+        /// Saves the uploaded image to the local filesystem.
+        /// </summary>
+        /// <param name="imageFile">The image file to save.</param>
+        /// <returns>The path to the saved image.</ret
         private async Task<string> SaveImageLocallyAsync(IFormFile imageFile)
         {
             var uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
@@ -95,7 +125,12 @@ namespace EAD.Controllers
             return "/uploads/" + uniqueFileName;
         }
 
-
+        /// <summary>
+        /// Updates an existing product.
+        /// </summary>
+        /// <param name="id">The ID of the product to update.</param>
+        /// <param name="product">The updated product data.</param>
+        /// <returns>OK result with the updated product.</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product)
         {
@@ -113,12 +148,23 @@ namespace EAD.Controllers
             return Ok(product);
         }
 
+        /// <summary>
+        /// Deletes a product by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the product to delete.</param>
+        /// <returns>OK result with the ID of the deleted product.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
             await _productRepository.DeleteProductAsync(id);
             return Ok(new { Id = id });
         }
+
+        /// <summary>
+        /// Deactivates a product by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the product to deactivate.</param>
+        /// <returns>OK result with the ID of the deactivated product.</returns>
 
         [HttpPut("deactivate/{id}")]
         public async Task<IActionResult> DeactivateProduct(string id)
@@ -133,6 +179,11 @@ namespace EAD.Controllers
             return Ok(new { Id = id });
         }
 
+        /// <summary>
+        /// Activates a product by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the product to activate.</param>
+        /// <returns>OK result with the ID of the activated product.</returns>
         [HttpPut("activate/{id}")]
         public async Task<IActionResult> ActivateProduct(string id)
         {
