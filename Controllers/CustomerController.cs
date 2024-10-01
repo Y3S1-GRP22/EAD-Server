@@ -1,6 +1,5 @@
 ﻿using EAD.Models;
 using EAD.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static EAD.Repositories.CustomerRepository;
 
@@ -52,15 +51,6 @@ public class CustomerController : ControllerBase
         return Ok(customer);
     }
 
-    [Authorize(Roles = "Admin,CSR")]
-    [HttpGet]
-    public async Task<IActionResult> GetAllCustomers()
-    {
-        var customers = await _customerRepository.GetAllCustomersAsync();
-        if (customers == null) return NotFound();
-        return Ok(customers);
-    }
-
     [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateCustomer(string id, [FromBody] Customer customer)
     {
@@ -77,7 +67,7 @@ public class CustomerController : ControllerBase
     }
 
 
-    [Authorize(Roles = "Admin,CSR")]
+
     [HttpPut("activate/{email}")]
     public async Task<IActionResult> ActivateCustomer(string email)
     {
@@ -91,18 +81,21 @@ public class CustomerController : ControllerBase
         return Ok(new { Email = email, Status = "Activated" });
     }
 
-    [HttpPut("deactivate/{email}")]
-    public async Task<IActionResult> DeactivateCustomer(string email)
+    [HttpDelete("delete/{email}")]
+    public async Task<IActionResult> DeleteCustomer(string email)
     {
+        // Check if the customer exists
         var customer = await _customerRepository.GetCustomerByEmailAsync(email);
         if (customer == null)
         {
-            return NotFound();
+            return NotFound(new { Status = "Error", Message = "Customer not found" });
         }
 
-        await _customerRepository.DeactivateCustomerAsync(email);
-        return Ok(new { Email = email, Status = "Deactivated" });
+        // Proceed to delete the customer
+        await _customerRepository.DeleteCustomerAsync(email);
+        return Ok(new { Status = "Success", Message = "Customer deleted", Email = email });
     }
+
 
     [HttpPost("login")]
     public async Task<IActionResult> LoginCustomer([FromBody] LoginRequest loginRequest)

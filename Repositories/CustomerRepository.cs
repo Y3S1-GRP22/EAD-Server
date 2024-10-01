@@ -54,10 +54,10 @@
                 customer.Id = id; // Set the Id to ensure it remains the same
             }
 
-            if (!string.IsNullOrEmpty(customer.Password))
-            {
-                customer.Password = BCrypt.HashPassword(customer.Password);
-            }
+            //if (!string.IsNullOrEmpty(customer.Password))
+            //{
+            //    customer.Password = BCrypt.HashPassword(customer.Password);
+            //}
 
             var result = await _customers.ReplaceOneAsync(c => c.Id == id, customer);
             if (result.MatchedCount == 0)
@@ -70,11 +70,12 @@
 
 
         // Deactivate customer account
-        public async Task DeactivateCustomerAsync(string email)
+        public async Task DeleteCustomerAsync(string email)
         {
-            var update = Builders<Customer>.Update.Set(c => c.IsActive, false);
-            await _customers.UpdateOneAsync(c => c.Email == email, update);
+            // Deletes the customer from the database using the email
+            await _customers.DeleteOneAsync(c => c.Email == email);
         }
+
 
         // Activate customer account (only CSR/Admin)
         public async Task ActivateCustomerAsync(string email)
