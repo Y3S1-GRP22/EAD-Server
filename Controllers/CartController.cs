@@ -1,12 +1,12 @@
-﻿﻿
-    using EAD.Models;
-    using EAD.Repositories;
-    using global::EAD.Models;
-    using global::EAD.Repositories;
-    using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
+﻿
+using EAD.Models;
+using EAD.Repositories;
+using global::EAD.Models;
+using global::EAD.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-    namespace EAD.Controllers
+namespace EAD.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -60,15 +60,16 @@
         [HttpDelete("{userId}/items/{itemId}")]
         public async Task<IActionResult> RemoveItemFromCart(string userId, string itemId)
         {
+            Console.WriteLine(userId + " " + itemId);
             await _cartRepository.RemoveItemFromCartAsync(userId, itemId);
             return Ok(new { message = "Item removed from cart successfully." });
         }
 
         // Clear Cart for a User
-        [HttpDelete("{userId}/clear")]
-        public async Task<IActionResult> ClearCart(string userId)
+        [HttpDelete("{cartId}/clear")]
+        public async Task<IActionResult> ClearCart(string cartId)
         {
-            await _cartRepository.ClearCartAsync(userId);
+            await _cartRepository.ClearCartAsync(cartId);
             return Ok(new { message = "Cart cleared successfully." });
         }
 
@@ -87,6 +88,57 @@
             await _cartRepository.DeleteCartAsync(userId);
             return Ok(new { message = "Cart deleted successfully." });
         }
+
+
+
+        // Updated method to accept status directly
+        [HttpPut("{userId}/status/{cartId}")]
+        public async Task<IActionResult> UpdateCartStatus(string userId, string cartId)
+        {
+            var cart = await _cartRepository.GetCartByUserIdAsync(userId);
+
+            // Check if the cart exists and if the provided cartId matches
+            if (cart == null || cart.Id != cartId)
+            {
+                return NotFound(new { message = $"No cart found for the user with ID: {userId} and cart ID: {cartId}" });
+            }
+
+            // Update the cart status
+            cart.Status = false;
+            await _cartRepository.UpdateCartAsync(cart);
+            return Ok(new { message = "Cart status updated successfully." });
+        }
+
+        // Get Cart by ID
+[HttpGet("cart/{cartId}")]
+public async Task<IActionResult> GetCartById(string cartId)
+{
+    var cart = await _cartRepository.GetCartByIdAsync(cartId);
+
+    if (cart == null)
+    {
+        return NotFound(new { message = $"No cart found with ID: {cartId}" });
     }
+
+    return Ok(cart);
 }
 
+        [HttpPut("{cartId}/item/{itemId}")]
+        public async Task<IActionResult> UpdateCartItemQuantityByCartId(string cartId, string itemId, [FromBody] int quantity)
+        {
+            if (quantity <= 0)
+                return BadRequest("Quantity must be greater than 0.");
+
+            await _cartRepository.UpdateCartItemQuantityByCartIdAsync(cartId, itemId, quantity);
+            return Ok(new { message = "Item quantity updated successfully." });
+        }
+
+        [HttpDelete("{cartId}/item/{itemId}")]
+        public async Task<IActionResult> RemoveItemFromCartByCartId(string cartId, string itemId)
+        {
+            await _cartRepository.RemoveItemFromCartByCartIdAsync(cartId, itemId);
+            return Ok(new { message = "Item removed from cart successfully." });
+        }
+
+    }
+}

@@ -48,5 +48,22 @@ namespace EAD.Repositories
             return await _comments.Find(comment => comment.UserId == userId).ToListAsync();
         }
 
+        public async Task<double?> GetAverageRatingByProductId(string productId)
+        {
+            var comments = await _comments.Find(comment => comment.ProductId == productId).ToListAsync();
+
+            // Check if there are any comments for the product
+            if (comments.Count == 0)
+            {
+                return null; // No ratings available
+            }
+
+            // Calculate the average rating
+            double averageRating = (double)comments.Average(comment => comment.Rating);
+
+            return averageRating;
+        }
     }
+
 }
+

@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shobi\\OneDrive\\Desktop\\EAD Project Final\\EAD.csproj": {}
+    "C:\\Users\\dharane\\Desktop\\EAD-Server\\EAD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shobi\\OneDrive\\Desktop\\EAD Project Final\\EAD.csproj": {
+    "C:\\Users\\dharane\\Desktop\\EAD-Server\\EAD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shobi\\OneDrive\\Desktop\\EAD Project Final\\EAD.csproj",
+        "projectUniqueName": "C:\\Users\\dharane\\Desktop\\EAD-Server\\EAD.csproj",
         "projectName": "EAD",
-        "projectPath": "C:\\Users\\shobi\\OneDrive\\Desktop\\EAD Project Final\\EAD.csproj",
-        "packagesPath": "C:\\Users\\shobi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shobi\\OneDrive\\Desktop\\EAD Project Final\\obj\\",
+        "projectPath": "C:\\Users\\dharane\\Desktop\\EAD-Server\\EAD.csproj",
+        "packagesPath": "C:\\Users\\dharane\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dharane\\Desktop\\EAD-Server\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\shobi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\dharane\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -104,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

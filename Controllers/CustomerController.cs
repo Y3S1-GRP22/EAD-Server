@@ -16,6 +16,13 @@ public class CustomerController : ControllerBase
         _customerRepository = customerRepository;
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetAllCustomers()
+    {
+        var customers = await _customerRepository.GetAllCustomersAsync();
+        return Ok(customers);
+    }
+
     [HttpPost("register")]
     public async Task<IActionResult> RegisterCustomer([FromBody] Customer customer)
     {
