@@ -98,7 +98,7 @@
             if (product != null && product.StockQuantity < 10) 
             {
                 //TODO: add vendor email
-                await _notificationService.NotifyVendorAsync("vendorEmail", productId, product.StockQuantity);
+                await _notificationService.NotifyVendorAsync(product.VendorId, productId, product.StockQuantity);
             }
         }
     }

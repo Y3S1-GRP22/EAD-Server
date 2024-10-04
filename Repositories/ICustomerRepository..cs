@@ -14,7 +14,7 @@ public interface ICustomerRepository
 
     Task<Customer> UpdateCustomerAsync(string id, Customer customer);
 
-    Task DeactivateCustomerAsync(string email);
+    Task DeleteCustomerAsync(string email);
 
     Task ActivateCustomerAsync(string email);
 

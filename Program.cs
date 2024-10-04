@@ -36,6 +36,11 @@ builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 builder.Services.AddScoped<IVendorNotificationService, VendorNotificationService>();
 builder.Services.AddControllers();
 builder.Services.AddScoped<VendorService>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 builder.Services.AddScoped<VendorRepository>();
 builder.Services.AddTransient<EmailService>();
 builder.Services.AddScoped<UserRepository>();
