@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EAD.Controllers
 {
+    // Route configuration for the Inventory API controller
     [ApiController]
     [Route("api/inventory")]
     public class InventoryController : ControllerBase
