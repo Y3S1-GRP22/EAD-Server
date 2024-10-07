@@ -1,5 +1,6 @@
 ﻿using EAD.Models;
 using EAD.Repositories;
+using EAD.Services;
 using Microsoft.AspNetCore.Mvc;
 using static EAD.Repositories.CustomerRepository;
 
@@ -10,10 +11,14 @@ namespace EAD.Controller;
 public class CustomerController : ControllerBase
 {
     private readonly ICustomerRepository _customerRepository;
+    private readonly ICsrNotificationService _csrNotificationService;
+    private readonly UserRepository _userRepository;
 
-    public CustomerController(ICustomerRepository customerRepository)
+    public CustomerController(ICustomerRepository customerRepository, ICsrNotificationService csrNotificationService, UserRepository userRepository)
     {
         _customerRepository = customerRepository;
+        _csrNotificationService = csrNotificationService;
+        _userRepository = userRepository;
     }
 
     [HttpGet]
@@ -40,6 +45,12 @@ public class CustomerController : ControllerBase
         try
         {
             await _customerRepository.RegisterCustomerAsync(customer);
+            // Get all registered CSRs
+            List<User> csrs = await _userRepository.GetAllCsrsAsync();
+            List<string> csrEmails = csrs.Select(csr => csr.Email).ToList();
+
+            // Notify all CSRs about the new customer registration
+            await _csrNotificationService.NotifyCsrsAboutNewCustomerAsync(customer.Email, csrEmails);
             return CreatedAtAction(nameof(GetCustomerByEmail), new { email = customer.Email }, customer);
         }
         catch (Exception ex)
