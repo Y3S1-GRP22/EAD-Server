@@ -103,6 +103,23 @@ public class CustomerController : ControllerBase
         return Ok(new { Email = email, Status = "Activated" });
     }
 
+    [HttpPut("deactivate/{email}")]
+    public async Task<IActionResult> DeactivateCustomer(string email)
+    {
+        var customer = await _customerRepository.GetCustomerByEmailAsync(email);
+        if (customer == null)
+        {
+            return NotFound();
+        }
+        if (customer.IsActive == false)
+        {
+            return BadRequest(new { Email = email, Status = "Already Deactivated" }); // Account is already activated
+        }
+
+        await _customerRepository.DeactivateCustomerAsync(email);
+        return Ok(new { Email = email, Status = "Deactivated" });
+    }
+
     [HttpDelete("delete/{email}")]
     public async Task<IActionResult> DeleteCustomer(string email)
     {

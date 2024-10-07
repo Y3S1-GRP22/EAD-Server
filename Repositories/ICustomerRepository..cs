@@ -18,6 +18,8 @@ public interface ICustomerRepository
 
     Task ActivateCustomerAsync(string email);
 
+    Task DeactivateCustomerAsync(string email);
+
     Task ReactivateCustomerAsync(string email);
 
     Task<LoginResult> LoginCustomerAsync(string email, string password);

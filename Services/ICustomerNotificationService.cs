@@ -8,5 +8,6 @@ namespace EAD.Services
     public interface ICustomerNotificationService
     {
         Task NotifyCustomerActivationAsync(string customerEmail);
+        Task NotifyCustomerDeactivationAsync(string customerEmail);
     }
 }

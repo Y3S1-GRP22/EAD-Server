@@ -90,6 +90,16 @@
             await _customerNotificationService.NotifyCustomerActivationAsync(email);
         }
 
+        // Deactivate customer account (only CSR/Admin)
+        public async Task DeactivateCustomerAsync(string email)
+        {
+            var update = Builders<Customer>.Update.Set(c => c.IsActive, false);
+            await _customers.UpdateOneAsync(c => c.Email == email, update);
+
+            // After activating the customer, send an activation email
+            await _customerNotificationService.NotifyCustomerDeactivationAsync(email);
+        }
+
 
         // Reactivate customer account (only CSR/Admin)
         public async Task ReactivateCustomerAsync(string email)
