@@ -83,6 +83,10 @@ public class CustomerController : ControllerBase
         {
             return NotFound();
         }
+        if (customer.IsActive)
+        {
+            return BadRequest(new { Email = email, Status = "Already Activated" }); // Account is already activated
+        }
 
         await _customerRepository.ActivateCustomerAsync(email);
         return Ok(new { Email = email, Status = "Activated" });

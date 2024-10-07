@@ -1,32 +1,32 @@
-﻿using MailKit.Net.Smtp;
+using MailKit.Net.Smtp;
 using MimeKit;
 using System.Threading.Tasks;
+using EAD.Services;
 
 namespace EAD.Services
 {
-    public class VendorNotificationService : IVendorNotificationService
+    public class CustomerNotificationService : ICustomerNotificationService
     {
         private readonly string _smtpServer = "smtp.gmail.com";
         private readonly int _smtpPort = 587;
         private readonly string _smtpUser = "nonamenecessary0612@gmail.com";
         private readonly string _smtpPass = "ekbgdpcvlpdiciws";
 
-        public async Task NotifyVendorAsync(string vendorId, string productId, int stockQuantity)
+        public async Task NotifyCustomerActivationAsync(string customerEmail)
         {
             var emailMessage = new MimeMessage();
             emailMessage.From.Add(new MailboxAddress("iCorner", _smtpUser));
-            emailMessage.To.Add(new MailboxAddress("", vendorId));
-            emailMessage.Subject = "Low Stock Alert";
+            emailMessage.To.Add(new MailboxAddress("", customerEmail));
+            emailMessage.Subject = "Account Activation Successful";
 
             var bodyBuilder = new BodyBuilder
             {
                 HtmlBody = $@"
-                <p>Dear Vendor,</p>
-                <p>We are writing to inform you that the stock for product <strong>{productId}</strong> is running low.</p>
-                <p>Current stock quantity: <strong>{stockQuantity}</strong></p>
-                <p>Please take the necessary actions to restock.</p>
-                <p>Thank you.</p>
-                <p>Best regards,<br>iCorner</p>"
+                <p>Dear Customer,</p>
+                <p>We are pleased to inform you that your account has been successfully activated.</p>
+                <p>You can now log in and enjoy our services.</p>
+                <p>Thank you for choosing iCorner.</p>
+                <p>Best regards,<br>iCorner Team</p>"
             };
             emailMessage.Body = bodyBuilder.ToMessageBody();
 

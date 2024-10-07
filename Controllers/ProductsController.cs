@@ -1,5 +1,6 @@
 ﻿using EAD.Models;
 using EAD.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EAD.Controllers
@@ -69,7 +70,7 @@ namespace EAD.Controllers
             }
 
             product.CategoryName = category.Name;
-            
+
             await _productRepository.AddProductAsync(product);
             return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
         }

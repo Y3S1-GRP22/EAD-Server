@@ -1,6 +1,7 @@
 ﻿namespace EAD.Repositories
 {
     using EAD.Models;
+    using EAD.Services;
     using MongoDB.Bson;
     using MongoDB.Driver;
     using BCrypt.Net;
@@ -10,10 +11,12 @@
     public class CustomerRepository : ICustomerRepository
     {
         private readonly IMongoCollection<Customer> _customers;
+        private readonly ICustomerNotificationService _customerNotificationService;
 
-        public CustomerRepository(IMongoDatabase database)
+        public CustomerRepository(IMongoDatabase database, ICustomerNotificationService customerNotificationService)
         {
             _customers = database.GetCollection<Customer>("Customers");
+            _customerNotificationService = customerNotificationService; // Injected service
         }
 
         // Get all customers
@@ -29,11 +32,11 @@
         }
 
         // Register a new customer 
-        public async Task RegisterCustomerAsync(Customer customer) 
+        public async Task RegisterCustomerAsync(Customer customer)
         {
             if (string.IsNullOrEmpty(customer.Id))
             {
-                customer.Id = ObjectId.GenerateNewId().ToString(); 
+                customer.Id = ObjectId.GenerateNewId().ToString();
             }
 
             // Hash the password before saving
@@ -82,7 +85,11 @@
         {
             var update = Builders<Customer>.Update.Set(c => c.IsActive, true);
             await _customers.UpdateOneAsync(c => c.Email == email, update);
+
+            // After activating the customer, send an activation email
+            await _customerNotificationService.NotifyCustomerActivationAsync(email);
         }
+
 
         // Reactivate customer account (only CSR/Admin)
         public async Task ReactivateCustomerAsync(string email)
