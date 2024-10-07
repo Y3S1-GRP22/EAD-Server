@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EAD.Controllers
 {
+    // Route configuration for the Products API controller
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
