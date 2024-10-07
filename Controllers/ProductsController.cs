@@ -196,6 +196,18 @@ namespace EAD.Controllers
             await _productRepository.ActivateProductAsync(id);
             return Ok(new { Id = id });
         }
+
+        /// <summary>
+        /// Retrieves all products with stock quantity greater than 0.
+        /// </summary>
+        /// <returns>List of available products.</returns>
+        [HttpGet("available")]
+        public async Task<IActionResult> GetAvailableProducts()
+        {
+            var availableProducts = await _productRepository.GetAvailableProductsAsync();
+            return Ok(availableProducts);
+        }
+
     }
 }
 
