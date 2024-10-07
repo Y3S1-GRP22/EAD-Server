@@ -173,5 +173,15 @@
             return await _products.Find(p => p.CategoryId == objectId.ToString()).ToListAsync();
         }
 
+        /// <summary>
+        /// Retrieves all products with stock quantity greater than 0.
+        /// </summary>
+        /// <returns>An enumerable collection of available products.</returns>
+        public async Task<IEnumerable<Product>> GetAvailableProductsAsync()
+        {
+            return await _products.Find(p => p.StockQuantity > 0).ToListAsync();
+        }
+
+
     }
 }
