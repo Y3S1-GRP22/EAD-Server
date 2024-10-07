@@ -1,21 +1,44 @@
-﻿using EAD.Models;
+﻿// -----------------------------------------------------------------------
+// <summary>
+// This class represents the CustomerController, which manages customer-related operations
+// such as registration, retrieval, updates, activation, deletion, and login.
+// It provides endpoints to interact with customer data through the API.
+// </summary>
+// <remarks>
+// This controller relies on the ICustomerRepository interface for data access operations.
+// </remarks>
+// -----------------------------------------------------------------------
+
+using EAD.Models;
 using EAD.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using static EAD.Repositories.CustomerRepository;
 
 namespace EAD.Controller;
 
+/// <summary>
+/// Controller for managing customer-related operations.
+/// Provides endpoints for customer registration, retrieval, updates, activation, deletion, and login.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class CustomerController : ControllerBase
 {
     private readonly ICustomerRepository _customerRepository;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CustomerController"/> class.
+    /// </summary>
+    /// <param name="customerRepository">The customer repository instance for accessing customer data.</param>
     public CustomerController(ICustomerRepository customerRepository)
     {
         _customerRepository = customerRepository;
     }
 
+    /// <summary>
+    /// Retrieves all customers from the database.
+    /// </summary>
+    /// <returns>An IActionResult containing the list of customers.</returns>
     [HttpGet]
     public async Task<IActionResult> GetAllCustomers()
     {
@@ -23,6 +46,12 @@ public class CustomerController : ControllerBase
         return Ok(customers);
     }
 
+    /// <summary>
+    /// Registers a new customer.
+    /// Validates the customer information and checks for existing accounts before registering.
+    /// </summary>
+    /// <param name="customer">The customer object containing registration details.</param>
+    /// <returns>An IActionResult indicating the result of the registration attempt.</returns>
     [HttpPost("register")]
     public async Task<IActionResult> RegisterCustomer([FromBody] Customer customer)
     {
@@ -49,7 +78,11 @@ public class CustomerController : ControllerBase
         }
     }
 
-
+    /// <summary>
+    /// Retrieves a customer by their email address.
+    /// </summary>
+    /// <param name="email">The email address of the customer to retrieve.</param>
+    /// <returns>An IActionResult containing the customer details or a NotFound result.</returns>
     [HttpGet("{email}")]
     public async Task<IActionResult> GetCustomerByEmail(string email)
     {
@@ -58,6 +91,13 @@ public class CustomerController : ControllerBase
         return Ok(customer);
     }
 
+    /// <summary>
+    /// Updates an existing customer's information.
+    /// Requires the customer ID and the updated customer object.
+    /// </summary>
+    /// <param name="id">The ID of the customer to update.</param>
+    /// <param name="customer">The customer object containing updated details.</param>
+    /// <returns>An IActionResult containing the updated customer details.</returns>
     [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateCustomer(string id, [FromBody] Customer customer)
     {
@@ -73,8 +113,11 @@ public class CustomerController : ControllerBase
         return Ok(updatedCustomer);
     }
 
-
-
+    /// <summary>
+    /// Activates a deactivated customer account by email.
+    /// </summary>
+    /// <param name="email">The email address of the customer to activate.</param>
+    /// <returns>An IActionResult indicating the activation status.</returns>
     [HttpPut("activate/{email}")]
     public async Task<IActionResult> ActivateCustomer(string email)
     {
@@ -88,6 +131,11 @@ public class CustomerController : ControllerBase
         return Ok(new { Email = email, Status = "Activated" });
     }
 
+    /// <summary>
+    /// Deletes a customer account by email.
+    /// </summary>
+    /// <param name="email">The email address of the customer to delete.</param>
+    /// <returns>An IActionResult indicating the deletion status.</returns>
     [HttpDelete("delete/{email}")]
     public async Task<IActionResult> DeleteCustomer(string email)
     {
@@ -103,7 +151,12 @@ public class CustomerController : ControllerBase
         return Ok(new { Status = "Success", Message = "Customer deleted", Email = email });
     }
 
-
+    /// <summary>
+    /// Authenticates a customer using email and password.
+    /// Returns customer details upon successful login.
+    /// </summary>
+    /// <param name="loginRequest">The login request object containing email and password.</param>
+    /// <returns>An IActionResult indicating the login result.</returns>
     [HttpPost("login")]
     public async Task<IActionResult> LoginCustomer([FromBody] LoginRequest loginRequest)
     {
@@ -134,5 +187,4 @@ public class CustomerController : ControllerBase
                 return StatusCode(500, "An unexpected error occurred.");
         }
     }
-
 }

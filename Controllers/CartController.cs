@@ -1,4 +1,14 @@
-﻿
+﻿// -----------------------------------------------------------------------
+// <summary>
+// This class represents the CartController, which manages cart-related operations
+// for users in the application. It provides endpoints to create, retrieve, 
+// update, and delete carts and cart items, as well as to clear a cart.
+// </summary>
+// <remarks>
+// This controller relies on the ICartRepository interface for data access operations.
+// </remarks>
+// -----------------------------------------------------------------------
+
 using EAD.Models;
 using EAD.Repositories;
 using global::EAD.Models;
@@ -32,7 +42,6 @@ namespace EAD.Controllers
 
             return Ok(cart);
         }
-
 
         // Add Item to Cart
         [HttpPost("{userId}/items")]
@@ -89,8 +98,6 @@ namespace EAD.Controllers
             return Ok(new { message = "Cart deleted successfully." });
         }
 
-
-
         // Updated method to accept status directly
         [HttpPut("{userId}/status/{cartId}")]
         public async Task<IActionResult> UpdateCartStatus(string userId, string cartId)
@@ -110,18 +117,18 @@ namespace EAD.Controllers
         }
 
         // Get Cart by ID
-[HttpGet("cart/{cartId}")]
-public async Task<IActionResult> GetCartById(string cartId)
-{
-    var cart = await _cartRepository.GetCartByIdAsync(cartId);
+        [HttpGet("cart/{cartId}")]
+        public async Task<IActionResult> GetCartById(string cartId)
+        {
+            var cart = await _cartRepository.GetCartByIdAsync(cartId);
 
-    if (cart == null)
-    {
-        return NotFound(new { message = $"No cart found with ID: {cartId}" });
-    }
+            if (cart == null)
+            {
+                return NotFound(new { message = $"No cart found with ID: {cartId}" });
+            }
 
-    return Ok(cart);
-}
+            return Ok(cart);
+        }
 
         [HttpPut("{cartId}/item/{itemId}")]
         public async Task<IActionResult> UpdateCartItemQuantityByCartId(string cartId, string itemId, [FromBody] int quantity)
@@ -139,6 +146,5 @@ public async Task<IActionResult> GetCartById(string cartId)
             await _cartRepository.RemoveItemFromCartByCartIdAsync(cartId, itemId);
             return Ok(new { message = "Item removed from cart successfully." });
         }
-
     }
 }
