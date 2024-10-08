@@ -33,7 +33,7 @@ public class CustomerController : ControllerBase
     /// Initializes a new instance of the <see cref="CustomerController"/> class.
     /// </summary>
     /// <param name="customerRepository">The customer repository instance for accessing customer data.</param>
-    public CustomerController(ICustomerRepository customerRepository)
+    public CustomerController(ICustomerRepository customerRepository, ICsrNotificationService csrNotificationService, UserRepository userRepository)
     {
         _customerRepository = customerRepository;
         _csrNotificationService = csrNotificationService;

@@ -117,28 +117,24 @@ namespace EAD.Controllers
         }
 
         // Get Cart by ID
+
         [HttpGet("cart/{cartId}")]
         public async Task<IActionResult> GetCartById(string cartId)
         {
             var cart = await _cartRepository.GetCartByIdAsync(cartId);
-            [HttpGet("cart/{cartId}")]
-            public async Task<IActionResult> GetCartById(string cartId)
+
+            if (cart == null)
             {
-                var cart = await _cartRepository.GetCartByIdAsync(cartId);
-
-                if (cart == null)
-                {
-                    return NotFound(new { message = $"No cart found with ID: {cartId}" });
-                }
-                if (cart == null)
-                {
-                    return NotFound(new { message = $"No cart found with ID: {cartId}" });
-                }
-
-                return Ok(cart);
+                return NotFound(new { message = $"No cart found with ID: {cartId}" });
             }
+            if (cart == null)
+            {
+                return NotFound(new { message = $"No cart found with ID: {cartId}" });
+            }
+
             return Ok(cart);
         }
+
 
         [HttpPut("{cartId}/item/{itemId}")]
         public async Task<IActionResult> UpdateCartItemQuantityByCartId(string cartId, string itemId, [FromBody] int quantity)
