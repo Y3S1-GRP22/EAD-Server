@@ -83,6 +83,8 @@ namespace EAD.Repositories
                     newItem.Id = ObjectId.GenerateNewId().ToString();
                 }
 
+                newItem.Status = "pending";
+
                 // Add the item to the cart
                 activeCart.Items.Add(newItem);
             }

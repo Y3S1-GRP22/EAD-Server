@@ -1,8 +1,8 @@
 namespace EAD.Repositories
 {
-    using EAD.Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using EAD.Models;
 
     public interface IOrderRepository
     {
@@ -20,5 +20,10 @@ namespace EAD.Repositories
 
         Task DeleteOrderAsync(string id);
 
+        Task<
+            IEnumerable<(Product Product, int Quantity, string Status)>
+        > GetVendorProductsInOrderAsync(string vendorEmail, string orderId);
+
+        Task<bool> AcceptVendorProductsInOrderAsync(string vendorEmail, string orderId);
     }
 }
