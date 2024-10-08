@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1kyh3ZWMnc8=",
+  "dgSpecHash": "vElUpyPjmoMgISWpOVr1uBamyEZ26Avvvx833nx4rJMQuXsFpmPuuDnVhtfSanNRQ1SwqfdUf8PIOT3NoL3JZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\EAD.csproj",
+  "projectFilePath": "C:\\Projects\\EAD\\EAD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

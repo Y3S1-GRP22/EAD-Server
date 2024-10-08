@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2+oQqiYTYMcty0lxQ7S29kWdAPpr1We1A9yTIfuqA+o=",
+  "Hash": "nU/1/0PZFTOCngLCohHY9t/B9Ag5A+Q5hX6Oljz22Bc=",
   "Source": "EAD",
   "BasePath": "_content/EAD",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "EAD\\wwwroot",
       "Source": "EAD",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\00e54361-6285-4eba-90b6-5ad9c709d15c_download (4).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\00e54361-6285-4eba-90b6-5ad9c709d15c_download (4).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/00e54361-6285-4eba-90b6-5ad9c709d15c_download (4).jpg",
       "AssetKind": "All",
@@ -36,10 +36,29 @@
       "OriginalItemSpec": "wwwroot\\uploads\\00e54361-6285-4eba-90b6-5ad9c709d15c_download (4).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\0762ed93-1716-4847-9a44-083bc203bfa1_download (2).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\00e54361-6285-4eba-90b6-5ad9c709d15c_download(4).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
+      "BasePath": "_content/EAD",
+      "RelativePath": "uploads/00e54361-6285-4eba-90b6-5ad9c709d15c_download (4).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\00e54361-6285-4eba-90b6-5ad9c709d15c_download (4).jpg"
+    },
+    {
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\0762ed93-1716-4847-9a44-083bc203bfa1_download(2).jpg",
+      "SourceId": "EAD",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/0762ed93-1716-4847-9a44-083bc203bfa1_download (2).jpg",
       "AssetKind": "All",
@@ -55,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\0762ed93-1716-4847-9a44-083bc203bfa1_download (2).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\1b3a55a6-42d5-4e8a-8107-f04fa69942cc_download (8).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\1b3a55a6-42d5-4e8a-8107-f04fa69942cc_download (8).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/1b3a55a6-42d5-4e8a-8107-f04fa69942cc_download (8).jpg",
       "AssetKind": "All",
@@ -74,10 +93,29 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1b3a55a6-42d5-4e8a-8107-f04fa69942cc_download (8).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\5fb3fe7a-ab9c-4f8e-9063-e2ea88b58aaf_download (8).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\1b3a55a6-42d5-4e8a-8107-f04fa69942cc_download(8).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
+      "BasePath": "_content/EAD",
+      "RelativePath": "uploads/1b3a55a6-42d5-4e8a-8107-f04fa69942cc_download (8).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1b3a55a6-42d5-4e8a-8107-f04fa69942cc_download (8).jpg"
+    },
+    {
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\5fb3fe7a-ab9c-4f8e-9063-e2ea88b58aaf_download(8).jpg",
+      "SourceId": "EAD",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/5fb3fe7a-ab9c-4f8e-9063-e2ea88b58aaf_download (8).jpg",
       "AssetKind": "All",
@@ -93,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\5fb3fe7a-ab9c-4f8e-9063-e2ea88b58aaf_download (8).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\6632b866-554f-47f9-9c62-c096271c916f_download (7).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\6632b866-554f-47f9-9c62-c096271c916f_download(7).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/6632b866-554f-47f9-9c62-c096271c916f_download (7).jpg",
       "AssetKind": "All",
@@ -112,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\6632b866-554f-47f9-9c62-c096271c916f_download (7).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\6859a6d1-3214-4ea9-9fb6-2f338944f8fb_download (5).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\6859a6d1-3214-4ea9-9fb6-2f338944f8fb_download(5).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/6859a6d1-3214-4ea9-9fb6-2f338944f8fb_download (5).jpg",
       "AssetKind": "All",
@@ -131,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\6859a6d1-3214-4ea9-9fb6-2f338944f8fb_download (5).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\6e029f73-f7d8-44c9-94ad-958224a6d444_download (9).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\6e029f73-f7d8-44c9-94ad-958224a6d444_download(9).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/6e029f73-f7d8-44c9-94ad-958224a6d444_download (9).jpg",
       "AssetKind": "All",
@@ -150,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\6e029f73-f7d8-44c9-94ad-958224a6d444_download (9).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\6e51152f-8342-4d6b-8276-12940fedfcc4_download (1).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\6e51152f-8342-4d6b-8276-12940fedfcc4_download(1).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/6e51152f-8342-4d6b-8276-12940fedfcc4_download (1).jpg",
       "AssetKind": "All",
@@ -169,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\6e51152f-8342-4d6b-8276-12940fedfcc4_download (1).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\7618bd78-0e9b-465c-b061-9a8d14f74653_download (3).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\7618bd78-0e9b-465c-b061-9a8d14f74653_download(3).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/7618bd78-0e9b-465c-b061-9a8d14f74653_download (3).jpg",
       "AssetKind": "All",
@@ -188,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\7618bd78-0e9b-465c-b061-9a8d14f74653_download (3).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\8b8d6cd1-7732-46a4-8e78-62cf35cf260d_download (7).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\8b8d6cd1-7732-46a4-8e78-62cf35cf260d_download(7).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/8b8d6cd1-7732-46a4-8e78-62cf35cf260d_download (7).jpg",
       "AssetKind": "All",
@@ -207,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\8b8d6cd1-7732-46a4-8e78-62cf35cf260d_download (7).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\9311baf8-80a3-4323-a21f-abf1a377d2a7_download (1).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\9311baf8-80a3-4323-a21f-abf1a377d2a7_download(1).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/9311baf8-80a3-4323-a21f-abf1a377d2a7_download (1).jpg",
       "AssetKind": "All",
@@ -226,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\9311baf8-80a3-4323-a21f-abf1a377d2a7_download (1).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\9c7b5f64-f0bf-4ca1-a046-7f8344cc2bf8_download (3).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\9c7b5f64-f0bf-4ca1-a046-7f8344cc2bf8_download(3).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/9c7b5f64-f0bf-4ca1-a046-7f8344cc2bf8_download (3).jpg",
       "AssetKind": "All",
@@ -245,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\9c7b5f64-f0bf-4ca1-a046-7f8344cc2bf8_download (3).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\a903be06-fb9c-4b63-91dc-3ea41733e409_download (6).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\a903be06-fb9c-4b63-91dc-3ea41733e409_download(6).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/a903be06-fb9c-4b63-91dc-3ea41733e409_download (6).jpg",
       "AssetKind": "All",
@@ -264,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\a903be06-fb9c-4b63-91dc-3ea41733e409_download (6).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\b2f90ad3-377b-461c-a6e0-b26d277e2c6f_download (1).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\b2f90ad3-377b-461c-a6e0-b26d277e2c6f_download(1).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/b2f90ad3-377b-461c-a6e0-b26d277e2c6f_download (1).jpg",
       "AssetKind": "All",
@@ -283,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\b2f90ad3-377b-461c-a6e0-b26d277e2c6f_download (1).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\c6664ce2-4513-4058-b5ea-6d298ff27f92_download (2).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\c6664ce2-4513-4058-b5ea-6d298ff27f92_download(2).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/c6664ce2-4513-4058-b5ea-6d298ff27f92_download (2).jpg",
       "AssetKind": "All",
@@ -302,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\c6664ce2-4513-4058-b5ea-6d298ff27f92_download (2).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\da474a42-28b8-4409-ad18-c3ba4f7b5c42_download (8).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\da474a42-28b8-4409-ad18-c3ba4f7b5c42_download(8).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/da474a42-28b8-4409-ad18-c3ba4f7b5c42_download (8).jpg",
       "AssetKind": "All",
@@ -321,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\da474a42-28b8-4409-ad18-c3ba4f7b5c42_download (8).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\e4db3549-b324-4cd7-aea2-098c4436076c_download (6).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\e4db3549-b324-4cd7-aea2-098c4436076c_download(6).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/e4db3549-b324-4cd7-aea2-098c4436076c_download (6).jpg",
       "AssetKind": "All",
@@ -340,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\e4db3549-b324-4cd7-aea2-098c4436076c_download (6).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\f4fa091e-e7cd-46b7-963e-1221a371fbe0_download (7).jpg",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\f4fa091e-e7cd-46b7-963e-1221a371fbe0_download(7).jpg",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/f4fa091e-e7cd-46b7-963e-1221a371fbe0_download (7).jpg",
       "AssetKind": "All",
@@ -359,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\f4fa091e-e7cd-46b7-963e-1221a371fbe0_download (7).jpg"
     },
     {
-      "Identity": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\uploads\\ff8e2cc4-07b7-4eb5-a114-d1973269d53f_download (8).png",
+      "Identity": "C:\\Projects\\EAD\\wwwroot\\uploads\\ff8e2cc4-07b7-4eb5-a114-d1973269d53f_download(8).png",
       "SourceId": "EAD",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\EAD\\wwwroot\\",
       "BasePath": "_content/EAD",
       "RelativePath": "uploads/ff8e2cc4-07b7-4eb5-a114-d1973269d53f_download (8).png",
       "AssetKind": "All",

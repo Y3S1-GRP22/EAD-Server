@@ -57,9 +57,9 @@ namespace EAD.Controller
         [HttpPost("create")]
         public async Task<IActionResult> CreateOrder([FromBody] Order order)
         {
-            if (order == null || string.IsNullOrEmpty(order.CustomerId) || string.IsNullOrEmpty(order.VendorId) || string.IsNullOrEmpty(order.Cart))
+            if (order == null || string.IsNullOrEmpty(order.CustomerId)  || string.IsNullOrEmpty(order.Cart))
             {
-                return BadRequest(new { message = "Customer ID, Vendor ID, and Cart ID are required." });
+                return BadRequest(new { message = "Customer ID, and Cart ID are required." });
             }
 
             try
@@ -106,5 +106,22 @@ namespace EAD.Controller
                 return StatusCode(500, new { message = "An error occurred while deleting the order." });
             }
         }
+
+        // Update the status of an order
+        [HttpPut("cancel/{id}")]
+        public async Task<IActionResult> CancelOrderStatus(string id)
+        {
+            var order = await _orderRepository.GetOrderByIdAsync(id);
+            if (order == null || order.Id != id)
+            {
+                return NotFound(new { message = $"No order found  with ID: {id} " });
+            }
+
+            // Update the cart status
+            order.Status = "Cancelled";
+            await _orderRepository.UpdateOrderAsync(id,order);
+            return Ok(new { message = "Order status updated successfully." });
+        }
+
     }
 }

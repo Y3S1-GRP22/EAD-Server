@@ -15,7 +15,7 @@ namespace EAD.Models
         public string CustomerId { get; set; }
 
         [BsonRepresentation(BsonType.ObjectId)]
-        public string VendorId { get; set; }
+        public string? VendorId { get; set; }
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string Cart { get; set; }

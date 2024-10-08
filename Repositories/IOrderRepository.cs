@@ -19,5 +19,6 @@ namespace EAD.Repositories
         Task<Order> UpdateOrderAsync(string id, Order order);
 
         Task DeleteOrderAsync(string id);
+
     }
 }

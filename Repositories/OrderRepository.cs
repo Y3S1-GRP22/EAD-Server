@@ -42,12 +42,19 @@ namespace EAD.Repositories
         // Create a new order
         public async Task CreateOrderAsync(Order order)
         {
+            Console.WriteLine("Order ID >|: " + order.Id);
             if (string.IsNullOrEmpty(order.Id))
             {
                 order.Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
+                await _orders.InsertOneAsync(order);
+            } else
+            {
+                Console.WriteLine("Order ID Sucess :  " + order.Id);
+                await UpdateOrderAsync(order.Id,order);
             }
 
-            await _orders.InsertOneAsync(order);
+
+            
         }
 
         // Update an existing order
@@ -73,5 +80,8 @@ namespace EAD.Repositories
                 throw new Exception("Order not found for deletion.");
             }
         }
+
+       
+
     }
 }

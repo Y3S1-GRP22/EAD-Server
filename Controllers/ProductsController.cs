@@ -1,9 +1,11 @@
 ﻿using EAD.Models;
 using EAD.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EAD.Controllers
 {
+    // Route configuration for the Products API controller
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -69,7 +71,7 @@ namespace EAD.Controllers
             }
 
             product.CategoryName = category.Name;
-            
+
             await _productRepository.AddProductAsync(product);
             return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
         }
@@ -196,6 +198,18 @@ namespace EAD.Controllers
             await _productRepository.ActivateProductAsync(id);
             return Ok(new { Id = id });
         }
+
+        /// <summary>
+        /// Retrieves all products with stock quantity greater than 0.
+        /// </summary>
+        /// <returns>List of available products.</returns>
+        [HttpGet("available")]
+        public async Task<IActionResult> GetAvailableProducts()
+        {
+            var availableProducts = await _productRepository.GetAvailableProductsAsync();
+            return Ok(availableProducts);
+        }
+
     }
 }
 

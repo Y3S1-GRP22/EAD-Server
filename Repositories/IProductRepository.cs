@@ -58,5 +58,12 @@
         /// <param name="id">The ID of the category.</param>
         /// <returns>An enumerable collection of products in the specified category.</returns>
         Task<IEnumerable<Product>> GetProductsByCategoryAsync(string id);
+
+        /// <summary>
+        /// Retrieves all products with stock quantity greater than 0.
+        /// </summary>
+        /// <returns>An enumerable collection of available products.</returns>
+        Task<IEnumerable<Product>> GetAvailableProductsAsync();
+
     }
 }
