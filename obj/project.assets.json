@@ -7115,11 +7115,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\EAD\\EAD.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\EAD.csproj",
       "projectName": "EAD",
-      "projectPath": "C:\\Projects\\EAD\\EAD.csproj",
-      "packagesPath": "C:\\Users\\shobi\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\EAD\\obj\\",
+      "projectPath": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\EAD.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USER\\Desktop\\Repos\\EAD-Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
