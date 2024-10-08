@@ -14,7 +14,7 @@ namespace EAD.Services
         public async Task NotifyVendorAsync(string vendorId, string productId, int stockQuantity)
         {
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("EAD", _smtpUser));
+            emailMessage.From.Add(new MailboxAddress("iCorner", _smtpUser));
             emailMessage.To.Add(new MailboxAddress("", vendorId));
             emailMessage.Subject = "Low Stock Alert";
 
@@ -26,7 +26,7 @@ namespace EAD.Services
                 <p>Current stock quantity: <strong>{stockQuantity}</strong></p>
                 <p>Please take the necessary actions to restock.</p>
                 <p>Thank you.</p>
-                <p>Best regards,<br>EAD</p>"
+                <p>Best regards,<br>iCorner</p>"
             };
             emailMessage.Body = bodyBuilder.ToMessageBody();
 

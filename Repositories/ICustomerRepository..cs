@@ -59,13 +59,9 @@ namespace EAD.Repositories
         // --------------------------------------------------------------------------------
         Task DeleteCustomerAsync(string email);
 
-        // --------------------------------------------------------------------------------
-        // Method: ActivateCustomerAsync
-        // Purpose: Activates a customer account by their email address.
-        // Parameters: 
-        //      - email: string (The customer's email address).
-        // --------------------------------------------------------------------------------
         Task ActivateCustomerAsync(string email);
+
+        Task DeactivateCustomerAsync(string email);
 
         // --------------------------------------------------------------------------------
         // Method: ReactivateCustomerAsync

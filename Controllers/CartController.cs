@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <summary>
 // This class represents the CartController, which manages cart-related operations
 // for users in the application. It provides endpoints to create, retrieve, 
@@ -121,12 +121,22 @@ namespace EAD.Controllers
         public async Task<IActionResult> GetCartById(string cartId)
         {
             var cart = await _cartRepository.GetCartByIdAsync(cartId);
-
-            if (cart == null)
+            [HttpGet("cart/{cartId}")]
+            public async Task<IActionResult> GetCartById(string cartId)
             {
-                return NotFound(new { message = $"No cart found with ID: {cartId}" });
-            }
+                var cart = await _cartRepository.GetCartByIdAsync(cartId);
 
+                if (cart == null)
+                {
+                    return NotFound(new { message = $"No cart found with ID: {cartId}" });
+                }
+                if (cart == null)
+                {
+                    return NotFound(new { message = $"No cart found with ID: {cartId}" });
+                }
+
+                return Ok(cart);
+            }
             return Ok(cart);
         }
 

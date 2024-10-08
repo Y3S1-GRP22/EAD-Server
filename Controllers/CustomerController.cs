@@ -11,6 +11,7 @@
 
 using EAD.Models;
 using EAD.Repositories;
+using EAD.Services;
 using Microsoft.AspNetCore.Mvc;
 using static EAD.Repositories.CustomerRepository;
 
@@ -25,6 +26,8 @@ namespace EAD.Controller;
 public class CustomerController : ControllerBase
 {
     private readonly ICustomerRepository _customerRepository;
+    private readonly ICsrNotificationService _csrNotificationService;
+    private readonly UserRepository _userRepository;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerController"/> class.
@@ -33,6 +36,8 @@ public class CustomerController : ControllerBase
     public CustomerController(ICustomerRepository customerRepository)
     {
         _customerRepository = customerRepository;
+        _csrNotificationService = csrNotificationService;
+        _userRepository = userRepository;
     }
 
     /// <summary>
@@ -69,6 +74,12 @@ public class CustomerController : ControllerBase
         try
         {
             await _customerRepository.RegisterCustomerAsync(customer);
+            // Get all registered CSRs
+            List<User> csrs = await _userRepository.GetAllCsrsAsync();
+            List<string> csrEmails = csrs.Select(csr => csr.Email).ToList();
+
+            // Notify all CSRs about the new customer registration
+            await _csrNotificationService.NotifyCsrsAboutNewCustomerAsync(customer.Email, csrEmails);
             return CreatedAtAction(nameof(GetCustomerByEmail), new { email = customer.Email }, customer);
         }
         catch (Exception ex)
@@ -126,16 +137,32 @@ public class CustomerController : ControllerBase
         {
             return NotFound();
         }
+        if (customer.IsActive)
+        {
+            return BadRequest(new { Email = email, Status = "Already Activated" }); // Account is already activated
+        }
 
         await _customerRepository.ActivateCustomerAsync(email);
         return Ok(new { Email = email, Status = "Activated" });
     }
 
-    /// <summary>
-    /// Deletes a customer account by email.
-    /// </summary>
-    /// <param name="email">The email address of the customer to delete.</param>
-    /// <returns>An IActionResult indicating the deletion status.</returns>
+    [HttpPut("deactivate/{email}")]
+    public async Task<IActionResult> DeactivateCustomer(string email)
+    {
+        var customer = await _customerRepository.GetCustomerByEmailAsync(email);
+        if (customer == null)
+        {
+            return NotFound();
+        }
+        if (customer.IsActive == false)
+        {
+            return BadRequest(new { Email = email, Status = "Already Deactivated" }); // Account is already activated
+        }
+
+        await _customerRepository.DeactivateCustomerAsync(email);
+        return Ok(new { Email = email, Status = "Deactivated" });
+    }
+
     [HttpDelete("delete/{email}")]
     public async Task<IActionResult> DeleteCustomer(string email)
     {
