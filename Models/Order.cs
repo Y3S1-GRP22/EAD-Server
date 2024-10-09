@@ -1,4 +1,4 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
@@ -13,9 +13,6 @@ namespace EAD.Models
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string CustomerId { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string? VendorId { get; set; }
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string Cart { get; set; }
