@@ -36,6 +36,7 @@ builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
 builder.Services.AddScoped<IVendorNotificationService, VendorNotificationService>();
 builder.Services.AddScoped<ICustomerNotificationService, CustomerNotificationService>();
 builder.Services.AddScoped<ICsrNotificationService, CsrNotificationService>();
+builder.Services.AddScoped<IUserNotificationService, UserNotificationService>();
 builder.Services.AddControllers();
 builder.Services.AddScoped<VendorService>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();

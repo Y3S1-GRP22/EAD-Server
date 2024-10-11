@@ -21,11 +21,13 @@ namespace EAD.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
+        private readonly IUserNotificationService _userEmailService;
 
         // Constructor to inject the UserService for user-related operations.
-        public UserController(UserService userService)
+        public UserController(UserService userService, IUserNotificationService userEmailService)
         {
             _userService = userService;
+            _userEmailService = userEmailService;
         }
 
         // POST: api/user
@@ -56,9 +58,22 @@ namespace EAD.Controllers
 
             try
             {
+                var originalPassword = newUser.Password;
                 // Register the user asynchronously
                 await _userService.RegisterAsync(newUser);
-                return Ok(new { Message = "Registration successful. Please log in." });
+                // Create a dummy user object to send in the email
+                var dummyUser = new User
+                {
+                    Username = newUser.Username,
+                    Email = newUser.Email,
+                    Password = originalPassword,
+                    MobileNumber = newUser.MobileNumber,
+                    Address = newUser.Address,
+                    Role = newUser.Role
+                };
+                await _userEmailService.SendRegistrationEmailAsync(dummyUser);
+
+                return Ok(new { Message = "Registration successful. Please check your email for login details." });
             }
             catch (Exception ex)
             {

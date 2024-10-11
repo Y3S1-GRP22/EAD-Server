@@ -25,11 +25,13 @@ namespace EAD.Controllers
     {
         // Dependency injection for the UserService, which handles user-related data operations
         private readonly UserService _userService;
+        private readonly IUserNotificationService _userEmailService;
 
         // Constructor for AdminController to inject UserService
-        public AdminController(UserService userService)
+        public AdminController(UserService userService, IUserNotificationService userEmailService)
         {
             _userService = userService;
+            _userEmailService = userEmailService;
         }
 
         // Inline comments at the beginning of each method.
@@ -78,7 +80,9 @@ namespace EAD.Controllers
             var result = await _userService.ActivateUserAsync(userId); // Calls service to activate the user
             if (result)
             {
-                return Ok(new { message = "User account activated successfully" }); // Success response
+                // Notify the user via email upon successful activation
+                await _userEmailService.SendAccountActivationEmailAsync(userId);
+                return Ok(new { message = "User account activated successfully" });
             }
             return NotFound(new { message = "User not found" }); // Error response if user not found
         }
@@ -94,7 +98,9 @@ namespace EAD.Controllers
             var result = await _userService.DeactivateUserAsync(userId); // Calls service to deactivate the user
             if (result)
             {
-                return Ok(new { message = "User account deactivated successfully" }); // Success response
+                // Notify the user via email upon successful deactivation
+                await _userEmailService.SendAccountDeactivationEmailAsync(userId);
+                return Ok(new { message = "User account deactivated successfully" });
             }
             return NotFound(new { message = "User not found" }); // Error response if user not found
         }
