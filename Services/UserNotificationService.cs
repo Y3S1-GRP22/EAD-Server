@@ -30,7 +30,7 @@ public class UserNotificationService : IUserNotificationService
                 <ul>
                     <li><strong>Username:</strong> {user.Email}</li>
                     <li><strong>Password:</strong> {user.Password}</li>
-                    <li><strong>Password:</strong> {user.Role}</li>
+                    <li><strong>Role:</strong> {user.Role}</li>
                 </ul>
                 <p>You can log in and change your password and role in the user settings.</p>
                 <p>Best regards,<br>iCorner Team</p>"
